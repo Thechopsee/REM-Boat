@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/css/ol.css" type="text/css">
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
+
+    <title>REM-Boat</title>
+
+</head>
+<body>
+    <h1>REM-Boat</h1>
+    <div class="container">
+        <div class="Box">
+            Lights
+            <div class="controll-box">
+                <div class="textC">SearchLight</div>
+                <div class="button-line"><button class="on">On</button><button class="off">Off</button></div>
+            </div>
+            <div class="controll-box">
+                <div class="textC">Cabin</div>
+                <div class="button-line"><button class="on">On</button><button class="off">Off</button></div>
+            </div>
+            <div class="controll-box">
+                <div class="textC">Position</div>
+                <div class="button-line"><button class="on">On</button><button class="off">Off</button></div>
+            </div>
+            <div class="controll-box">
+                <div class="textC">Special</div>
+                <div class="button-line"><button class="on">On</button><button class="off">Off</button></div>
+            </div>
+        </div>
+        <div class="Box">
+            Status
+            <div class="status-line">Current Model:</div>
+            <div class="map" id="map"></div>
+            <div class="status-line">N 51.440510 14.248760</div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="bottom-box"></div>
+        <div class="bottom-box"></div>
+    </div>
+
+    <script type="text/javascript">
+        var map = new ol.Map({
+          target: 'map',
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            })
+          ],
+          view: new ol.View({
+            center: ol.proj.fromLonLat([37.41, 8.82]),
+            zoom: 4
+          })
+        });
+      </script>
+
+</body>
+</html>
