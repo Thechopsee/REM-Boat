@@ -10,6 +10,18 @@ body {
 footer {
   background-color: #AC8181;
 }
+/*-----------------------------------Mobile----------------------------------------*/
+@media screen and (max-width: 480px) {
+  .controll-box {
+    padding-left: 0;
+  }
+  .on {
+    padding: 10px !important;
+  }
+  .off {
+    padding: 10px !important;
+  }
+}
 /*---------------------------------------------------------------------------------*/
 .map {
   height: 400px;
@@ -34,14 +46,14 @@ footer {
   box-sizing: border-box;
   border: 2px solid #c9a959;
   flex: 1;
-  padding: 30px;
+  padding: 5%;
   min-width: 50%;
 }
 .on {
   background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 50% 100%;
+  padding: 15px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -51,7 +63,7 @@ footer {
   background-color: #f44336;
   border: none;
   color: white;
-  padding: 50% 100%;
+  padding: 15px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
