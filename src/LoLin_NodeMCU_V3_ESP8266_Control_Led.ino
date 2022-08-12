@@ -82,7 +82,26 @@ if (request.indexOf("/LED_CABIN=ON") != -1) {
     digitalWrite(ledPin, LOW); //PREPSATPIN
     value = LOW;
  }
-
+if (request.indexOf("/LED_POSITION=OFF") != -1) {
+    ledStatuses[2]=0;
+    digitalWrite(ledPin, HIGH); //PREPSATPIN
+    value = HIGH;
+ }
+if (request.indexOf("/LED_POSITION=ON") != -1) {
+    ledStatuses[2]=1;
+    digitalWrite(ledPin, LOW); //PREPSATPIN
+    value = LOW;
+ }
+ if (request.indexOf("/LED_SPECIAL=OFF") != -1) {
+    ledStatuses[3]=0;
+    digitalWrite(ledPin, HIGH); //PREPSATPIN
+    value = HIGH;
+ }
+if (request.indexOf("/LED_SPECIAL=ON") != -1) {
+    ledStatuses[3]=1;
+    digitalWrite(ledPin, LOW); //PREPSATPIN
+    value = LOW;
+ }
 // Set ledPin according to the request
  //digitalWrite(ledPin, value);
 

@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="https://raw.githack.com/Thechopsee/REM-Boat/main/style.css" type="text/css">
 
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,29 +19,32 @@
     <h1>REM-Boat 🟢</h1>
     <div class="container">
         <div class="Box">
-            
-            <div class="controll-box">
-                <div class="textC">SearchLight<div class="status-dot" id="searchlight-dot">🔴</div></div>
-                <div class="button-line"><a href="LED_SEARCH=ON"><button class="on">On</button></a><a href="LED_SEARCH=OFF"><button class="off">Off</button></a></div>
-            </div>
-            <div class="controll-box">
-                <div class="textC">Cabin<div class="status-dot" id="cabin-dot">🔴</div></div>
-                <div class="button-line"><a href="LED_CABIN=ON"><button class="on">On</button></a><a href="LED_CABIN=OFF"></a><button class="off">Off</button></a></div>
-            </div>
-            <div class="controll-box">
-                <div class="textC">Position<div class="status-dot" id="position-dot">🔴</div></div>
-                <div class="button-line"><button class="on">On</button><button class="off">Off</button></div>
-            </div>
-            <div class="controll-box">
-                <div class="textC">Special<div class="status-dot" id="special-dot">🔴</div></div>
-                <div class="button-line"><button class="on">On</button><button class="off">Off</button></div>
+            <div class="fake-border">
+                <div class="controll-box">
+                    <div class="textC">SearchLight<div class="status-dot" id="searchlight-dot">🔴</div></div>
+                    <div class="button-line"><a href="LED_SEARCH=ON"><button class="on">On</button></a><a href="LED_SEARCH=OFF"><button class="off">Off</button></a></div>
+                </div>
+                <div class="controll-box">
+                    <div class="textC">Cabin<div class="status-dot" id="cabin-dot">🔴</div></div>
+                    <div class="button-line"><a href="LED_CABIN=ON"><button class="on">On</button></a><a href="LED_CABIN=OFF"><button class="off">Off</button></a></div>
+                </div>
+                <div class="controll-box">
+                    <div class="textC">Position<div class="status-dot" id="position-dot">🔴</div></div>
+                    <div class="button-line"><a href="LED_POSITION=ON"><button class="on">On</button></a><a href="LED_POSITION=OFF"><button class="off">Off</button></a></div>
+                </div>
+                <div class="controll-box">
+                    <div class="textC">Special<div class="status-dot" id="special-dot">🔴</div></div>
+                    <div class="button-line"><a href="LED_SPECIAL=ON"><button class="on">On</button></a><a href="LED_SPECIAL=OFF"><button class="off">Off</button></a></div>
+                </div>
             </div>
         </div>
         <div class="Box">
-            Status
-            <div class="status-line">Current Model:</div>
-            <div class="map" id="map"></div>
-            <div class="status-line">N 51.440510 14.248760</div>
+            <div class="fake-border-empty">
+                Status
+                
+                <div class="map" id="map"></div>
+                <div class="status-line">N 51.440510 E 14.248760</div>
+            </div>
         </div>
     </div>
     <div class="bottom">
