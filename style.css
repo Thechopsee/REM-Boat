@@ -1,12 +1,22 @@
+/*-----------------------------------Basic-----------------------------------------*/
+h1 {
+  text-align: center;
+}
+body {
+  background-color: #253d5b;
+  color: #F8f8FF;
+  margin: 0;
+}
+footer {
+  background-color: #AC8181;
+}
+/*---------------------------------------------------------------------------------*/
 .map {
   height: 400px;
   width: 100%;
 }
-h1 {
-  text-align: center;
-}
 .Box {
-  border: 2px solid gray;
+  border: 2px solid #c9a959;
   margin-bottom: 5%;
   margin-left: 10%;
   margin-right: 10%;
@@ -22,7 +32,7 @@ h1 {
 }
 .controll-box {
   box-sizing: border-box;
-  border: 2px solid gray;
+  border: 2px solid #c9a959;
   flex: 1;
   padding: 30px;
   min-width: 50%;
@@ -31,7 +41,7 @@ h1 {
   background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 50% 100%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -41,7 +51,7 @@ h1 {
   background-color: #f44336;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 50% 100%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -56,4 +66,7 @@ h1 {
 }
 .status-dot {
   margin-bottom: 25%;
+}
+.textC {
+  font-size: 20px;
 }

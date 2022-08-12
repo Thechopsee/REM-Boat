@@ -1,12 +1,28 @@
+@color_M:#253d5b;
+@color_S1:#c9a959;
+@color_T:#F8f8FF;
+@color_G:#CFCECA;
+@color_F:#AC8181;
+/*-----------------------------------Basic-----------------------------------------*/
+h1{
+  text-align: center;
+}
+body{
+  background-color: @color_M;
+  color:@color_T;
+  margin:0;
+}
+footer{
+  background-color:@color_F;
+}
+/*---------------------------------------------------------------------------------*/
 .map {
     height: 400px;
     width: 100%;
   }
-h1{
-    text-align: center;
-}
+
 .Box{
-    border: 2px solid gray;
+    border: 2px solid @color_S1;
     margin-bottom: 5%;
     margin-left: 10%;
     margin-right: 10%;  
@@ -22,18 +38,17 @@ h1{
 }
 .controll-box{
     box-sizing: border-box;
-    border: 2px solid gray;
+    border: 2px solid @color_S1;
     flex: 1;
     padding: 30px;
     min-width: 50%;
-
 }
 
 .on {
     background-color: #4CAF50; 
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 50% 100%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -44,7 +59,7 @@ h1{
     background-color: #f44336;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 50% 100%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -64,4 +79,7 @@ h1{
     margin-bottom: 25%;
   }
 
+  .textC{
+    font-size: 20px;
+  }
   
