@@ -3,6 +3,7 @@
 #include <ESP8266WiFi.h>
 const char* ssid = "Na doma-2GHz";
 const char* password = "slunicko";
+int ledStatuses[4] = {0, 0, 0, 0};
 int ledPin = 2; // Arduino standard is GPIO13 but lolin nodeMCU is 2 http://www.esp8266.com/viewtopic.php?f=26&t=13410#p61332
 WiFiServer server(80);
 void setup() {
@@ -61,13 +62,25 @@ void loop() {
  //while High level turns it off
 
 int value = HIGH; //initially off
- if (request.indexOf("/LED=OFF") != -1) {
- digitalWrite(ledPin, HIGH);
- value = HIGH;
+if (request.indexOf("/LED_SEARCH==OFF") != -1) {
+    ledStatuses[0]=0;
+    digitalWrite(ledPin, HIGH);
+    value = HIGH;
  }
- if (request.indexOf("/LED=ON") != -1) {
- digitalWrite(ledPin, LOW);
- value = LOW;
+if (request.indexOf("/LED_SEARCH=ON") != -1) {
+    ledStatuses[0]=1;
+    digitalWrite(ledPin, LOW);
+    value = LOW;
+ }
+if (request.indexOf("/LED_CABIN=OFF") != -1) {
+    ledStatuses[1]=0;
+    digitalWrite(ledPin, HIGH); //PREPSATPIN
+    value = HIGH;
+ }
+if (request.indexOf("/LED_CABIN=ON") != -1) {
+    ledStatuses[1]=1;
+    digitalWrite(ledPin, LOW); //PREPSATPIN
+    value = LOW;
  }
 
 // Set ledPin according to the request

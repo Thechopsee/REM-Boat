@@ -9,29 +9,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
-
+    <base href="file:///C:/Users/ValMe/Documents/GitHub/REM-Boat/dashboard.html/" />
     <title>REM-Boat</title>
 
 </head>
 <body>
-    <h1>REM-Boat</h1>
+    <h1>REM-Boat 🟢</h1>
     <div class="container">
         <div class="Box">
-            Lights
+            
             <div class="controll-box">
-                <div class="textC">SearchLight</div>
+                <div class="textC">SearchLight<div class="status-dot" id="searchlight-dot">🔴</div></div>
+                <div class="button-line"><a href="LED_SEARCH=ON"><button class="on">On</button></a><a href="LED_SEARCH=OFF"><button class="off">Off</button></a></div>
+            </div>
+            <div class="controll-box">
+                <div class="textC">Cabin<div class="status-dot" id="cabin-dot">🔴</div></div>
+                <div class="button-line"><a href="LED_CABIN=ON"><button class="on">On</button></a><a href="LED_CABIN=OFF"></a><button class="off">Off</button></a></div>
+            </div>
+            <div class="controll-box">
+                <div class="textC">Position<div class="status-dot" id="position-dot">🔴</div></div>
                 <div class="button-line"><button class="on">On</button><button class="off">Off</button></div>
             </div>
             <div class="controll-box">
-                <div class="textC">Cabin</div>
-                <div class="button-line"><button class="on">On</button><button class="off">Off</button></div>
-            </div>
-            <div class="controll-box">
-                <div class="textC">Position</div>
-                <div class="button-line"><button class="on">On</button><button class="off">Off</button></div>
-            </div>
-            <div class="controll-box">
-                <div class="textC">Special</div>
+                <div class="textC">Special<div class="status-dot" id="special-dot">🔴</div></div>
                 <div class="button-line"><button class="on">On</button><button class="off">Off</button></div>
             </div>
         </div>

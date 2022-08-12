@@ -8,9 +8,18 @@ h1 {
 .Box {
   border: 2px solid gray;
   margin-bottom: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
 }
 .controll-box {
+  box-sizing: border-box;
   border: 2px solid gray;
+  flex: 1;
+  padding: 30px;
+  min-width: 50%;
 }
 .on {
   background-color: #4CAF50;
@@ -35,4 +44,10 @@ h1 {
 .button-line {
   display: flex;
   justify-content: space-around;
+}
+.controll-box:not(:first-child):not(:nth-child(1)) {
+  flex-grow: 0;
+}
+.status-dot {
+  margin-bottom: 25%;
 }
