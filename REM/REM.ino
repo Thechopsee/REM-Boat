@@ -1,8 +1,8 @@
 #include <ESP8266WiFi.h>
-const char* ssid = "ds22";
-const char* password = "jaro9597";
+const char* ssid = "Na doma-2GHz";
+const char* password = "slunicko";
 int ledStatuses[4] = {0, 0, 0, 0};
-int ledPin = 2; // Arduino standard is GPIO13 but lolin nodeMCU is 2 http://www.esp8266.com/viewtopic.php?f=26&t=13410#p61332
+int ledPin = 2; 
 WiFiServer server(80);
 
 void setup() 
@@ -77,39 +77,36 @@ void loop()
     }
     if (request.indexOf("/LED_CABIN=OFF") != -1) {
         ledStatuses[1]=0;
-        digitalWrite(4, LOW); //PREPSATPIN
+        digitalWrite(5, LOW); 
         value = HIGH;
     }
     if (request.indexOf("/LED_CABIN=ON") != -1) {
         ledStatuses[1]=1;
-        digitalWrite(4, HIGH); //PREPSATPIN
+        digitalWrite(5, HIGH); 
         value = LOW;
     }
     if (request.indexOf("/LED_POSITION=OFF") != -1) {
         ledStatuses[2]=0;
-        digitalWrite(16, LOW); //PREPSATPIN
-        digitalWrite(5, LOW); 
+        digitalWrite(4, LOW); 
+        digitalWrite(16, LOW); 
         value = HIGH;
     }
     if (request.indexOf("/LED_POSITION=ON") != -1) {
         ledStatuses[2]=1;
-        digitalWrite(16, HIGH); //PREPSATPIN
-        digitalWrite(5, HIGH); //PREPSATPIN
+        digitalWrite(4, HIGH); 
+        digitalWrite(16, HIGH); 
         value = LOW;
     }
     if (request.indexOf("/LED_SPECIAL=OFF") != -1) {
         ledStatuses[3]=0;
-        digitalWrite(ledPin, HIGH); //PREPSATPIN
+        digitalWrite(ledPin, HIGH); 
         value = HIGH;
     }
     if (request.indexOf("/LED_SPECIAL=ON") != -1) {
         ledStatuses[3]=1;
-        digitalWrite(ledPin, LOW); //PREPSATPIN
+        digitalWrite(ledPin, LOW); 
         value = LOW;
     }
-    // Set ledPin according to the request
-    //digitalWrite(ledPin, value);
-
     // Return the response
     client.println("HTTP/1.1 200 OK");
     client.println("Content-Type: text/html");
