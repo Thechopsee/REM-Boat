@@ -1,21 +1,15 @@
 #include <ESP8266WiFi.h>
 #include <Ethernet.h>
-#include <vector>
 #include "blok.hh"
-#include "controll_blok.hh"
-#include "renderer.hh"
 
 const char* ssid = "Na doma-2GHz";
 const char* password = "slunicko";
 int ledStatuses[4] = {0, 0, 0, 0};
 int ledPin = 2; 
 WiFiServer server(80);
-std::vector<Blok*> blocks;
-std::vector<Controll_blok*> contBlocks;
+
 void setup() 
 {
-  blocks.push_back(new Blok(0));
-  contBlocks.push_back(new Controll_blok(0,0,0,"Searchlight"));
   Serial.begin(115200);
     delay(10);
     pinMode(ledPin, OUTPUT);
@@ -133,10 +127,7 @@ void loop()
     client.println("<body>");
     client.println("<h1>REM-Boat</h1>");
     client.println("<div class=\"container\">");
-    
-    //client.println("<div class=\"Box\">");
-    Renderer *rd=new Renderer();
-    rd->drawBlok(blocks[0],contBlocks,client);
+    client.println("<div class=\"Box\">");
     client.println("<div class=\"fake-border\">");
     client.println("<div class=\"controll-box\">");
     client.println("<div class=\"textC\">SearchLight");
