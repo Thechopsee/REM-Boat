@@ -138,7 +138,6 @@ void loop()
     {
       rd->drawBlok(blocks[i],contBlocks,client);
     }
-    
     client.println("</body>");
     //end
 
