@@ -7,4 +7,6 @@ class Renderer
 {
   public:
     void drawBlok(Blok *bl,std::vector<Controll_blok*> cb,WiFiClient client);
+  private:
+    void drawControllBlok(Controll_blok* cb,WiFiClient client);
 };

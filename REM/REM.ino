@@ -16,13 +16,11 @@ void setup()
 {
   blocks.push_back(new Blok(0));
   contBlocks.push_back(new Controll_blok(0,0,0,"Searchlight"));
+  contBlocks.push_back(new Controll_blok(1,0,5,"Cabin"));
+  contBlocks.push_back(new Controll_blok(2,0,4,"Position"));
+  contBlocks.push_back(new Controll_blok(3,0,ledPin,"Special"));
   Serial.begin(115200);
     delay(10);
-    pinMode(ledPin, OUTPUT);
-    pinMode(5, OUTPUT);
-    pinMode(16, OUTPUT);
-    pinMode(4, OUTPUT);
-    pinMode(0, OUTPUT);
     digitalWrite(ledPin, HIGH);
 
     Serial.println();
@@ -136,56 +134,11 @@ void loop()
     
     //client.println("<div class=\"Box\">");
     Renderer *rd=new Renderer();
-    rd->drawBlok(blocks[0],contBlocks,client);
-    client.println("<div class=\"fake-border\">");
-    client.println("<div class=\"controll-box\">");
-    client.println("<div class=\"textC\">SearchLight");
-    if(ledStatuses[0]== 1) 
+    for(int i=0;i<blocks.size();i++)
     {
-        client.println("<div class=\"status-dot\" id=\"searchlight-dot\">🟢</div></div>");
+      rd->drawBlok(blocks[i],contBlocks,client);
     }
-    else
-    {
-        client.println("<div class=\"status-dot\" id=\"searchlight-dot\">🔴</div></div>");
-    }
-    client.println("<div class=\"button-line\"><a href=\"LED_SEARCH=ON\"><button class=\"on\">On</button></a><a href=\"LED_SEARCH=OFF\"><button class=\"off\">Off</button></a></div>");
-    client.println("</div>");
-    client.println("<div class=\"controll-box\">");
-    client.println("<div class=\"textC\">Cabin");
-    if(ledStatuses[1]== 1) 
-    {
-        client.println("<div class=\"status-dot\" id=\"searchlight-dot\">🟢</div></div>");
-    }
-    else
-    {
-        client.println("<div class=\"status-dot\" id=\"searchlight-dot\">🔴</div></div>");
-    }
-    client.println("<div class=\"button-line\"><a href=\"LED_CABIN=ON\"><button class=\"on\">On</button></a><a href=\"LED_CABIN=OFF\"><button class=\"off\">Off</button></a></div>");
-    client.println("</div>");
-    client.println("<div class=\"controll-box\">");
-    client.println("<div class=\"textC\">Position");
-    if(ledStatuses[2]== 1) 
-    {
-        client.println("<div class=\"status-dot\" id=\"searchlight-dot\">🟢</div></div>");
-    }
-    else
-    {
-        client.println("<div class=\"status-dot\" id=\"searchlight-dot\">🔴</div></div>");
-    }
-    client.println("<div class=\"button-line\"><a href=\"LED_POSITION=ON\"><button class=\"on\">On</button></a><a href=\"LED_POSITION=OFF\"><button class=\"off\">Off</button></a></div>");  
-    client.println("</div>");
-    client.println("<div class=\"controll-box\">");
-    client.println("<div class=\"textC\">Special");
-    if(ledStatuses[3]== 1) 
-    {
-        client.println("<div class=\"status-dot\" id=\"searchlight-dot\">🟢</div></div>");
-    }
-    else
-    {
-        client.println("<div class=\"status-dot\" id=\"searchlight-dot\">🔴</div></div>");
-    }
-    client.println("<div class=\"button-line\"><a href=\"LED_SPECIAL=ON\"><button class=\"on\">On</button></a><a href=\"LED_SPECIAL=OFF\"><button class=\"off\">Off</button></a></div>");
-    client.println("</div>");
+    
     client.println("</body>");
     //end
 
