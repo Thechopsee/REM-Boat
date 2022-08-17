@@ -1,24 +1,27 @@
 #include <ESP8266WiFi.h>
 #include <Ethernet.h>
 #include <vector>
+#include <string>
 #include "blok.hh"
 #include "controll_blok.hh"
 #include "renderer.hh"
 
 const char* ssid = "Na doma-2GHz";
 const char* password = "slunicko";
-int ledStatuses[4] = {0, 0, 0, 0};
-int ledPin = 2; 
+
 WiFiServer server(80);
 std::vector<Blok*> blocks;
 std::vector<Controll_blok*> contBlocks;
+Renderer *rd;
 void setup() 
 {
+  rd=new Renderer();
   blocks.push_back(new Blok(0));
   contBlocks.push_back(new Controll_blok(0,0,0,"Searchlight"));
   contBlocks.push_back(new Controll_blok(1,0,5,"Cabin"));
   contBlocks.push_back(new Controll_blok(2,0,4,"Position"));
-  contBlocks.push_back(new Controll_blok(3,0,ledPin,"Special"));
+  contBlocks.push_back(new Controll_blok(3,0,2,"Special"));
+
   Serial.begin(115200);
     delay(10);
     digitalWrite(ledPin, HIGH);
@@ -68,10 +71,25 @@ void loop()
     Serial.println(request);
     client.flush();
 
-    //Low level turns on the led
-    //while High level turns it off
+    for(int i=0;i<contBlocks.size();i++)
+    {
+        std::string nameoff="/";
+        name.append(contBlocks[i]->name);
+        name.append("=OFF");
+        std::string nameon="/";
+        name.append(contBlocks[i]->name);
+        name.append("=ON");
+        if(request.indexOf(nameoff.c_str())!=-1)
+        {
+            contBlocks[i]->setPin(false);
+        }
+        if(request.indexOf(nameon.c_str())!=-1)
+        {
+            contBlocks[i]->setPin(true);
+        }
+    }
 
-    int value = HIGH; //initially off
+    /*
     if (request.indexOf("/LED_SEARCH=OFF") != -1) {
         ledStatuses[0]=0;
         digitalWrite(0, LOW);
@@ -114,26 +132,10 @@ void loop()
         digitalWrite(ledPin, LOW); 
         value = LOW;
     }
-    // Return the response
-    client.println("HTTP/1.1 200 OK");
-    client.println("Content-Type: text/html");
-    client.println(""); 
-    client.println("<!DOCTYPE HTML>");
-    client.println("<html>");
-    client.println("<head>");
-    client.println("<meta charset=\"UTF-8\">"); 
-    client.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
-    client.println("<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/css/ol.css\" type=\"text/css\">");
-    client.println("<link rel=\"stylesheet\" href=\"https://raw.githack.com/Thechopsee/REM-Boat/main/style.css\" type=\"text/css\">");
-    client.println("<script src=\"https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js\"></script>");
-    client.println("<title>REM-Boat</title>");
-    client.println("</head>");
-    client.println("<body>");
-    client.println("<h1>REM-Boat</h1>");
-    client.println("<div class=\"container\">");
-    
-    //client.println("<div class=\"Box\">");
-    Renderer *rd=new Renderer();
+    */
+
+    // Render page
+    rd->drawHeader()
     for(int i=0;i<blocks.size();i++)
     {
       rd->drawBlok(blocks[i],contBlocks,client);

@@ -9,5 +9,6 @@ class Controll_blok
     char *name;
     Controll_blok(int id,int blok_id,int pin,char * name);
     void Initialization_pin();
+    void setPin(bool dat);
 
 };

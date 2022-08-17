@@ -14,3 +14,16 @@ void Controll_blok::Initialization_pin()
     
     pinMode(this->pin, OUTPUT);
 }
+void Controll_blok::setPin(bool dat)
+{
+    if(dat)
+    {
+        digitalWrite(this->pin, HIGH);
+        this->actual_status=true;
+    }
+    else
+    {
+        digitalWrite(this->pin, LOW);
+        this->actual_status=false;
+    }
+}
