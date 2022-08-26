@@ -40,10 +40,10 @@
         </div>
         <div class="Box">
             <div class="fake-border-empty">
-                Status
-                
+                <div class="nav-box">
                 <div class="map" id="map"></div>
-                <div class="status-line">N 51.440510 E 14.248760</div>
+                <div class="status-line"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -53,6 +53,8 @@
     </div>
 
     <script type="text/javascript">
+    function start()
+    {
         var map = new ol.Map({
           target: 'map',
           layers: [
@@ -65,6 +67,7 @@
             zoom: 4
           })
         });
+    }
       </script>
 <footer>
 &nbsp

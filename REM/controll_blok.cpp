@@ -1,17 +1,16 @@
 #include "controll_blok.hh"
 #include "Arduino.h"
-Controll_blok::Controll_blok(int id,int blok_id,int pin,char * name)
+Controll_blok::Controll_blok(int id,int blok_id,int pin,char * namee)
 {
-    this->id;
-    this->blok_id;
-    this->pin;
-    this->name=name;
+    this->id=id;
+    this->blok_id=blok_id;
+    this->pin=pin;
+    this->name=namee;
     this->actual_status=false;
     this->Initialization_pin();
 }
 void Controll_blok::Initialization_pin()
 {
-    
     pinMode(this->pin, OUTPUT);
 }
 void Controll_blok::setPin(bool dat)

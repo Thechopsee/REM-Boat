@@ -1,0 +1,18 @@
+#pragma once
+#include "status_blok.hh"
+#include "blok.hh"
+#include <string>
+#include <vector>
+#include "typeEnum.hh"
+class Nav_blok : public Blok
+{
+    private:
+        std::string latitude;
+        std::string longitude;
+        std::vector<std::string> pathLon;
+        std::vector<std::string> pathLat;
+    public:
+        Nav_blok(int id);
+        std::string getBlokStyle();
+        void getStatus();
+};

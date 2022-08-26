@@ -2,17 +2,31 @@
 #include <string>
 void Renderer::drawBlok(Blok *bl,std::vector<Controll_blok*> cb,WiFiClient client)
 {
-  client.println("<div class=\"Box\">");
-  client.println("<div class=\"fake-border\">");
-  for(int i=0;i<cb.size();i++)
+  if(bl->type==controll || bl->type==status)
   {
-    this->drawControllBlok(cb[i],client);
+    client.println("<div class=\"Box\">");
+    client.println("<div class=\"fake-border\">");
+    for(int i=0;i<cb.size();i++)
+    {
+      this->drawSmallBlok(cb[i],client);
+    }
+    client.println("</div>");
+    client.println("</div>");
   }
-  client.println("</div>");
-  client.println("</div>");
+  else
+  {
+    client.println("<div class=\"Box\" onload=start()>");
+    client.println("<div class=\"fake-border\">");         
+    client.println("<div class=\"nav-box\">");
+    client.println("<div class=\"map\" id=\"map\"></div>");
+    client.println("<div class=\"status-line\"></div>");
+    client.println("</div>");
+    client.println("</div>");
+    client.println("</div>");
+  }
 }
 
-void Renderer::drawControllBlok(Controll_blok* cb,WiFiClient client)
+void Renderer::drawSmallBlok(SmallBlok* cb,WiFiClient client)
 {
     client.println("<div class=\"controll-box\">");
     std::string namee="<div class=\"textC\">";
@@ -50,8 +64,16 @@ void Renderer::drawHeader(WiFiClient client)
   client.println("<link rel=\"stylesheet\" href=\"https://raw.githack.com/Thechopsee/REM-Boat/main/style.css\" type=\"text/css\">");
   client.println("<script src=\"https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js\"></script>");
   client.println("<title>REM-Boat</title>");
+  this->drawOLMJS(client);
   client.println("</head>");
   client.println("<body>");
   client.println("<h1>REM-Boat</h1>");
   client.println("<div class=\"container\">");
+}
+
+void Renderer::drawOLMJS(WiFiClient client)
+{
+  client.println("<script type=\"text/javascript\">");
+  client.println("function start(){var map = new ol.Map({target: \"map\",layers: [new ol.layer.Tile({source: new ol.source.OSM()})],view: new ol.View({center: ol.proj.fromLonLat([37.41, 8.82]),zoom: 4})});}");
+  client.println("</script>");
 }

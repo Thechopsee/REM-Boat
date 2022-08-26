@@ -26,6 +26,7 @@ footer {
 .map {
   height: 400px;
   width: 100%;
+  min-width: 100px;
 }
 .Box {
   border: 2px solid #c9a959;
