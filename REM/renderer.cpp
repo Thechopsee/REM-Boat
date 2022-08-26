@@ -15,7 +15,7 @@ void Renderer::drawBlok(Blok *bl,std::vector<Controll_blok*> cb,WiFiClient clien
   }
   else
   {
-    client.println("<div class=\"Box\" onload=start()>");
+    client.println("<div class=\"Box\" >");
     client.println("<div class=\"fake-border\">");         
     client.println("<div class=\"nav-box\">");
     client.println("<div class=\"map\" id=\"map\"></div>");
@@ -66,7 +66,7 @@ void Renderer::drawHeader(WiFiClient client)
   client.println("<title>REM-Boat</title>");
   this->drawOLMJS(client);
   client.println("</head>");
-  client.println("<body>");
+  client.println("<body onload=start()>");
   client.println("<h1>REM-Boat</h1>");
   client.println("<div class=\"container\">");
 }

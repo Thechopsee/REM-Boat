@@ -31,7 +31,7 @@ footer{
 .map {
     height: 400px;
     width: 100%;
-    min-width: 100px;
+    min-width: 400px;
   }
 
 .Box{
@@ -55,6 +55,13 @@ footer{
     flex: 1;
     padding: 5%;
     min-width: 50%;
+}
+.status-box{
+  box-sizing: border-box;
+  border: 2px solid @color_S1;
+  flex: 1;
+  padding: 5%;
+  min-width: 50%;
 }
 
 .on {
@@ -85,6 +92,9 @@ footer{
   }
 
   .controll-box:not(:first-child):not(:nth-child(1)) {
+    flex-grow:0;
+  }
+  .status-box:not(:first-child):not(:nth-child(1)) {
     flex-grow:0;
   }
 
