@@ -4,6 +4,7 @@
 #include <string>
 #include "blok.hh"
 #include "controll_blok.hh"
+#include "status_blok.hh"
 #include "nav_blok.hh"
 #include "renderer.hh"
 #include "typeEnum.hh"
@@ -13,18 +14,21 @@ const char* password = "jaro9597";
 
 WiFiServer server(80);
 std::vector<Blok*> blocks;
-std::vector<Controll_blok*> contBlocks;
+std::vector<SmallBlok*> contBlocks;
 Nav_blok* navBlock;
 Renderer *rd;
 void setup() 
 {
   rd=new Renderer();
   blocks.push_back(new Blok(0,controll));
+  blocks.push_back(new Blok(2,status));
   blocks.push_back((Blok*)new Nav_blok(1));
   contBlocks.push_back(new Controll_blok(0,0,0,"WTF"));
   contBlocks.push_back(new Controll_blok(1,0,5,"Cabin"));
   contBlocks.push_back(new Controll_blok(2,0,4,"Position"));
   contBlocks.push_back(new Controll_blok(3,0,2,"Special"));
+  contBlocks.push_back(new Status_blok(4,2,0,"Temp"));
+  contBlocks.push_back(new Status_blok(5,2,0,"Voltage"));
 
   Serial.begin(115200);
     delay(10);
@@ -86,13 +90,14 @@ void loop()
         nameon.append(contBlocks[i]->name);
         nameon.append("=ON");
         Serial.println(nameon.c_str());
+        Controll_blok * cb=(Controll_blok * )contBlocks[i];
         if(request.indexOf(nameoff.c_str())!=-1)
         {
-            contBlocks[i]->setPin(false);
+            cb->setPin(false);
         }
         if(request.indexOf(nameon.c_str())!=-1)
         {
-            contBlocks[i]->setPin(true);
+            cb->setPin(true);
         }
     }
 

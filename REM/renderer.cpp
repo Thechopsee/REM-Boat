@@ -1,6 +1,6 @@
 #include "renderer.hh"
 #include <string>
-void Renderer::drawBlok(Blok *bl,std::vector<Controll_blok*> cb,WiFiClient client)
+void Renderer::drawBlok(Blok *bl,std::vector<SmallBlok*> cb,WiFiClient client)
 {
   if(bl->type==controll || bl->type==status)
   {
@@ -8,7 +8,12 @@ void Renderer::drawBlok(Blok *bl,std::vector<Controll_blok*> cb,WiFiClient clien
     client.println("<div class=\"fake-border\">");
     for(int i=0;i<cb.size();i++)
     {
-      this->drawSmallBlok(cb[i],client);
+      if(cb[i]->blok_id==bl->id)
+      {
+        this->drawSmallBlok(cb[i],client,bl->type);
+      }
+      
+      
     }
     client.println("</div>");
     client.println("</div>");
@@ -26,20 +31,18 @@ void Renderer::drawBlok(Blok *bl,std::vector<Controll_blok*> cb,WiFiClient clien
   }
 }
 
-void Renderer::drawSmallBlok(SmallBlok* cb,WiFiClient client)
+void Renderer::drawSmallBlok(SmallBlok* cb,WiFiClient client,BlokTypeEnum type)
 {
+  if(type==controll)
+  {
     client.println("<div class=\"controll-box\">");
     std::string namee="<div class=\"textC\">";
     namee.append(cb->name);
-    client.println(namee.c_str()); 
-    if(cb->actual_status) 
-    {
-        client.println("<div class=\"status-dot\">🟢</div></div>");
-    }
-    else
-    {
-        client.println("<div class=\"status-dot\">🔴</div></div>");
-    }
+    client.println(namee.c_str());
+    std::string status= "<div class=\"status-dot\">";
+    status.append(cb->actual_status);
+    status.append("</div></div>");
+    client.println(status.c_str());
     std::string buttons="<div class=\"button-line\"><a href=\"";
     buttons.append(cb->name);
     buttons.append("=ON\"><button class=\"on\">On</button></a><a href=\"");
@@ -48,7 +51,23 @@ void Renderer::drawSmallBlok(SmallBlok* cb,WiFiClient client)
     client.println(buttons.c_str()); 
     //client.println("<div class=\"button-line\"><a href=\"LED_SEARCH=ON\"><button class=\"on\">On</button></a><a href=\"LED_SEARCH=OFF\"><button class=\"off\">Off</button></a></div>");
     client.println("</div>");
+  }
+  else
+  {
+    client.println("<div class=\"status-box\">");
+    std::string namee="<div class=\"textC\">";
+    namee.append(cb->name);
+    client.println(namee.c_str());
+    client.println("</div>");
+    std::string status= "<div class=\"textC\">";
+    status.append(cb->actual_status);
+    status.append("</div>");
+    client.println(status.c_str());
+    //client.println("<div class=\"button-line\"><a href=\"LED_SEARCH=ON\"><button class=\"on\">On</button></a><a href=\"LED_SEARCH=OFF\"><button class=\"off\">Off</button></a></div>");
+    client.println("</div>");
+  }
 }
+
 
 void Renderer::drawHeader(WiFiClient client)
 {
@@ -60,6 +79,7 @@ void Renderer::drawHeader(WiFiClient client)
   client.println("<head>");
   client.println("<meta charset=\"UTF-8\">"); 
   client.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
+  client.println("<meta http-equiv=\"refresh\" content=\"10\">");
   client.println("<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/css/ol.css\" type=\"text/css\">");
   client.println("<link rel=\"stylesheet\" href=\"https://raw.githack.com/Thechopsee/REM-Boat/main/style.css\" type=\"text/css\">");
   client.println("<script src=\"https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js\"></script>");

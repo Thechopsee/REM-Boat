@@ -4,7 +4,5 @@
 class Status_blok :public SmallBlok
 {
     public:
-    std::string name;
-    std::string status;
-    Status_blok(std::string name);
+    Status_blok(int id,int blok_id,int pin,char *name) ;
 };
