@@ -90,14 +90,14 @@ void loop()
         nameon.append(contBlocks[i]->name);
         nameon.append("=ON");
         Serial.println(nameon.c_str());
-        Controll_blok * cb=(Controll_blok * )contBlocks[i];
+        
         if(request.indexOf(nameoff.c_str())!=-1)
         {
-            cb->setPin(false);
+            contBlocks[i]->setPin(false);
         }
         if(request.indexOf(nameon.c_str())!=-1)
         {
-            cb->setPin(true);
+            contBlocks[i]->setPin(true);
         }
     }
 

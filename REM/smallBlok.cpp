@@ -7,3 +7,8 @@ SmallBlok::SmallBlok(int id,int blok_id,int pin,char *name)
     this->pin=pin;
     this->name=name;
 }
+
+void SmallBlok::setPin(bool dat)
+{
+  return;
+}

@@ -11,4 +11,5 @@ class SmallBlok
     char *name;
     std::string actual_status;
     SmallBlok(int id,int blok_id,int pin,char *name);
+    virtual void setPin(bool dat);
 };
