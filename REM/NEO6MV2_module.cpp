@@ -9,8 +9,8 @@ std::string NEO6MV2_module::getData()
         gps.f_get_position(&lat,&lon); // get latitude and longitude
     }
     
-    std::string latitude = std::string(lat,6);
-    std::string longitude = std::string(lon,6);
+    std::string latitude = std::to_string(lat);
+    std::string longitude = std::to_string(lon);
     latitude.append(";");
     latitude.append(longitude);
     Serial.println(latitude.c_str());
