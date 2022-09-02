@@ -6,11 +6,20 @@ std::string NEO6MV2_module::getData()
     
     if(gps.encode(gpsSerial.read()))// encode gps data
     { 
-        gps.f_get_position(&lat,&lon); // get latitude and longitude
+        lat=gps.location.lat();
+        lon=gps.location.lng();
     }
+
+    int year = gps.date.year();
+        int month = gps.date.month();
+        int day = gps.date.day();
+
+        int hour = gps.time.hour();
+        int minute = gps.time.minute();
+        int second = gps.time.second();
     
-    std::string latitude = std::string(lat,6);
-    std::string longitude = std::string(lon,6);
+    std::string latitude = std::to_string(hour);
+    std::string longitude = std::to_string(minute);
     latitude.append(";");
     latitude.append(longitude);
     Serial.println(latitude.c_str());
