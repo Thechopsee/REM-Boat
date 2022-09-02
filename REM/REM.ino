@@ -12,8 +12,8 @@
 #include "NEO6MV2_module.hh"
 
 
-const char* ssid = "Na doma-2GHz";
-const char* password = "slunicko";
+const char* ssid = "ds22";
+const char* password = "jaro9597";
 
 WiFiServer server(80);
 std::vector<Blok*> blocks;
@@ -80,10 +80,7 @@ void loop()
    
     contBlocks[5]->actual_status=modulee->getData();
     Serial.println("new data in");
-    while(!client.available())
-    {
-        delay(1);
-    }
+    
     // Read the first line of the request
     String request = client.readStringUntil('r');
     Serial.println(request);
