@@ -12,3 +12,8 @@ void SmallBlok::setPin(bool dat)
 {
   return;
 }
+
+void SmallBlok::update()
+{
+  return;
+}

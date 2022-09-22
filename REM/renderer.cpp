@@ -60,6 +60,7 @@ void Renderer::drawSmallBlok(SmallBlok* cb,WiFiClient client,BlokTypeEnum type)
     client.println(namee.c_str());
     client.println("</div>");
     std::string status= "<div class=\"textC\">";
+    cb->update();
     status.append(cb->actual_status);
     status.append("</div>");
     client.println(status.c_str());
