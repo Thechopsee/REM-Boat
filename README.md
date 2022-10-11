@@ -5,8 +5,8 @@ Main goal in this version is to hardcode first prototype for use with [BenchyRC]
 ,that should be controled using web interface.
 # Version 0.2
 Update contains:
--Status and Nav Blocks that can be use for show data from varios modules like temperature sensor,speed meter or GPS module.
--updated structure for easiest integration of user-made modules.  
+- Status and Nav Blocks that can be use for show data from varios modules like temperature sensor,speed meter or GPS module.
+- updated structure for easiest integration of user-made modules.  
 Used Libraries-
 For gps:
 SoftwareSerial library-https://docs.arduino.cc/learn/built-in-libraries/software-serial;
@@ -18,9 +18,9 @@ Docker Image running Arduino IDE for easy compilation [hub.docker.com/repository
 
 # Version 0.3
 Soon......
--More controll blok schemes ,like radio,range,text....
--GPS Path showed on map.
--status block with graphs.
+- More controll blok schemes ,like radio,range,text....
+- GPS Path showed on map.
+- status block with graphs.
 
 
 
