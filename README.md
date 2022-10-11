@@ -12,6 +12,8 @@ For gps:
 SoftwareSerial library-https://docs.arduino.cc/learn/built-in-libraries/software-serial;
 TinyGPS library-https://www.arduino.cc/reference/en/libraries/tinygps/;
 
+![alt text](https://github.com/Thechopsee/REM-Boat/blob/main/img/_DSC0003.jpg)
+First test of version 0.2
 Docker Image running Arduino IDE for easy compilation [hub.docker.com/repository/docker/thechopsee/remarduino](https://hub.docker.com/repository/docker/thechopsee/remarduino)
 
 # Version 0.3
