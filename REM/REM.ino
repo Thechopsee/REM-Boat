@@ -21,6 +21,7 @@ std::vector<Blok*> blocks;
 std::vector<SmallBlok*> contBlocks;
 Renderer *rd;
 
+
 void setup() 
 {
   
@@ -39,7 +40,7 @@ void setup()
   contBlocks.push_back(new Status_blok(5,2,0,"vzdalenost",vzdal));
 
 
-  Serial.begin(115200);
+  Serial.begin(9600);
     delay(10);
     
 

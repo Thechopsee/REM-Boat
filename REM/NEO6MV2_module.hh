@@ -8,7 +8,7 @@ class NEO6MV2_module :public Nav_module
  private:
  const byte rxPin = 14;
  const byte txPin = 12;
- SoftwareSerial gpsSerial;
+ SoftwareSerial gpsSerial=SoftwareSerial(14, 12);
  TinyGPSPlus gps; 
  public:
  NEO6MV2_module();
