@@ -4,6 +4,7 @@
 #include <ESP8266WiFi.h>
 #include "blok.hh"
 #include "typeEnum.hh"
+#include "nav_blok.hh"
 class Renderer
 {
   public:

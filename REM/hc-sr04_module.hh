@@ -1,3 +1,4 @@
+#pragma once
 #include "rxtxmodule.hh"
 #include <Arduino.h>
 #include <string>

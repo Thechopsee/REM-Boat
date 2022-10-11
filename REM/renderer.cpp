@@ -20,14 +20,8 @@ void Renderer::drawBlok(Blok *bl,std::vector<SmallBlok*> cb,WiFiClient client)
   }
   else
   {
-    client.println("<div class=\"Box\" >");
-    client.println("<div class=\"fake-border\">");         
-    client.println("<div class=\"nav-box\">");
-    client.println("<div class=\"map\" id=\"map\"></div>");
-    client.println("<div class=\"status-line\"></div>");
-    client.println("</div>");
-    client.println("</div>");
-    client.println("</div>");
+    
+    client.println(((Nav_blok*)bl)->getBlokStyle().c_str());
   }
 }
 

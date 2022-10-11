@@ -13,20 +13,19 @@
 #include "NEO6MV2_module.hh"
 
 
-const char* ssid = "ds22";
-const char* password = "jaro9597";
+const char* ssid = "Na doma-2GHz";
+const char* password = "slunicko";
 
 WiFiServer server(80);
 std::vector<Blok*> blocks;
 std::vector<SmallBlok*> contBlocks;
-Nav_blok* navBlock;
 Renderer *rd;
-NEO6MV2_module* modulee;
 
 void setup() 
 {
-  //modulee=new NEO6MV2_module();
-  rd=new Renderer();
+  
+
+ rd=new Renderer();
  blocks.push_back(new Blok(0,controll));
  blocks.push_back(new Blok(2,status));
  blocks.push_back((Blok*)new Nav_blok(1));

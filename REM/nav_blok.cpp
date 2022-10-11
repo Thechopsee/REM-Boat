@@ -1,14 +1,17 @@
 #include "nav_blok.hh"
 #include <string>
+#include <sstream>
 Nav_blok::Nav_blok(int id) :Blok(id,nav)
 {
     this->id=id;
     this->type=nav;
+    this->module=new NEO6MV2_module();
     this->getStatus();
 }
 std::string Nav_blok::getBlokStyle()
 {
     std::string blokstyle="";
+    this->getStatus();
     blokstyle.append("<div class=\"map\" id=\"map\"></div>");
     blokstyle.append("<div class=\"status-line\">N ");  
     blokstyle.append(this->latitude);
@@ -19,11 +22,18 @@ std::string Nav_blok::getBlokStyle()
                 
                 
 }
+
 void Nav_blok::getStatus()
 {
-    ///ToDo
-    this->latitude="0";
-    this->longitude="0";
+    std::string data=this->module->getData();
+    std::stringstream ss(data);
+    std::string world;
+    while(!ss.eof())
+    {
+        getline(ss,world,';');
+        this->latitude=world;
+    }
+    this->longitude=world;
     this->pathLon.push_back(this->longitude);
     this->pathLat.push_back(this->latitude);
 }
