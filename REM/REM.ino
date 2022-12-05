@@ -35,9 +35,9 @@ void setup()
  contBlocks.push_back(new Controll_blok(2,0,4,"Position"));
  contBlocks.push_back(new Controll_blok(3,0,2,"Special"));
 
-  Hcsr04Module* vzdal=new Hcsr04Module(15,13);
-  contBlocks.push_back(new Status_blok(4,2,0,"Temp",vzdal));
-  contBlocks.push_back(new Status_blok(5,2,0,"vzdalenost",vzdal));
+Hcsr04Module* vzdal=new Hcsr04Module(15,13);
+contBlocks.push_back(new Status_blok(4,2,0,"Temp",vzdal));
+contBlocks.push_back(new Status_blok(5,2,0,"vzdalenost",vzdal));
 
 
   Serial.begin(9600);
@@ -80,39 +80,17 @@ void loop()
         
         return;
     }
-
-   
-    //contBlocks[5]->actual_status=modulee->getData();
-    Serial.println("new data in");
+    Serial.println("NEW request");
     
-    // Read the first line of the request
     String request = client.readStringUntil('r');
     Serial.println(request);
     client.flush();
 
     for(int i=0;i<contBlocks.size();i++)
     {
-        std::string nameoff="/";
-        nameoff.append(contBlocks[i]->name);
-        
-        nameoff.append("=OFF");
-        Serial.println(nameoff.c_str());
-        std::string nameon="/";
-        nameon.append(contBlocks[i]->name);
-        nameon.append("=ON");
-        Serial.println(nameon.c_str());
-        
-        if(request.indexOf(nameoff.c_str())!=-1)
-        {
-            contBlocks[i]->setPin(false);
-        }
-        if(request.indexOf(nameon.c_str())!=-1)
-        {
-            contBlocks[i]->setPin(true);
-        }
+       contBlocks[i].resolveInput(request);
     }
 
-    // Render page
     rd->drawHeader(client);
     for(int i=0;i<blocks.size();i++)
     {
@@ -121,7 +99,6 @@ void loop()
     
     client.println("</body>");
       
-    //end
 
     delay(1);
     Serial.println("Client disonnected");
