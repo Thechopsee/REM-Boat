@@ -1,5 +1,6 @@
 #pragma once
 #include "smallBlok.hh"
+#include "Arduino.h"
 class Controll_blok: public SmallBlok
 {
   public:

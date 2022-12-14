@@ -28,11 +28,9 @@ void Nav_blok::getStatus()
     std::string data=this->module->getData();
     std::stringstream ss(data);
     std::string world;
-    while(!ss.eof())
-    {
-        getline(ss,world,';');
-        this->latitude=world;
-    }
+    getline(ss,world,';');
+    this->latitude=world;
+    getline(ss,world,';');
     this->longitude=world;
     this->pathLon.push_back(this->longitude);
     this->pathLat.push_back(this->latitude);

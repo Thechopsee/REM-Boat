@@ -27,11 +27,11 @@ void Controll_blok::resolveInput(String request)
         std::string nameoff="/";
         nameoff.append(this->name);
         nameoff.append("=OFF");
-        Serial.println(nameoff.c_str());
+        
         std::string nameon="/";
         nameon.append(this->name);
         nameon.append("=ON");
-        Serial.println(nameon.c_str());
+        
         
         if(request.indexOf(nameoff.c_str())!=-1)
         {

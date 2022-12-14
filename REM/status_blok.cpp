@@ -9,3 +9,10 @@ void Status_blok::update()
 {
     this->actual_status=this->module->GetStatus();
 }
+
+
+void Status_blok::resolveInput(String request)
+{
+    printf("");
+    return;
+}

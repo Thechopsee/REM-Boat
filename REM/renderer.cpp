@@ -89,6 +89,12 @@ void Renderer::drawHeader(WiFiClient client)
 void Renderer::drawOLMJS(WiFiClient client)
 {
   client.println("<script type=\"text/javascript\">");
-  client.println("function start(){var map = new ol.Map({target: \"map\",layers: [new ol.layer.Tile({source: new ol.source.OSM()})],view: new ol.View({center: ol.proj.fromLonLat([37.41, 8.82]),zoom: 4})});}");
-  client.println("</script>");
+  client.println("function start(){var map = new ol.Map({target: \"map\",layers: [new ol.layer.Tile({source: new ol.source.OSM()})],view: new ol.View({center: ol.proj.fromLonLat([18.610968,49.754749]),zoom:17 })});");
+  client.println("var markers = new ol.layer.Vector({");
+  client.println("source: new ol.source.Vector(),style: new ol.style.Style({image: new ol.style.Icon({anchor: [0.5, 1],src: 'https://icons-for-free.com/download-icon-map+marker+icon-1320166582858325800_48.png'})})});");
+  client.println("map.addLayer(markers);");
+
+ client.println("var marker = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([18.610968, 49.754749])));");
+ client.println("markers.getSource().addFeature(marker);");
+  client.println("}</script>");
 }

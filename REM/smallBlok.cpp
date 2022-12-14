@@ -17,3 +17,8 @@ void SmallBlok::update()
 {
   return;
 }
+
+void SmallBlok::resolveInput(String request)
+{
+  return;
+}

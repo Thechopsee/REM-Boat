@@ -2,15 +2,18 @@
 #include "nav_module.hh"
 #include <string>
 #include <SoftwareSerial.h>
-#include <TinyGPSPlus.h>
+#include <TinyGPS++.h>
+
 class NEO6MV2_module :public Nav_module
 {
  private:
- const byte rxPin = 14;
- const byte txPin = 12;
- SoftwareSerial gpsSerial=SoftwareSerial(14, 12);
- TinyGPSPlus gps; 
+ const byte rxPin = 4;
+ const byte txPin = 5;
+ float last_lon = 77.1703; 
+ float last_lat = 28.5458; 
+  
  public:
+ SoftwareSerial gpsSerial;
  NEO6MV2_module();
  std::string getData();
 };

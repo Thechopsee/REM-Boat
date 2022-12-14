@@ -1,23 +1,38 @@
 #include "NEO6MV2_module.hh"
-#include "SoftwareSerial.h"
+//gpsSerialSoftwareSerial ss(4, 5);
+TinyGPSPlus gps;
 std::string NEO6MV2_module::getData()
 {
     
-    float lat = 28.5458,lon = 77.1703; 
+    float lon = last_lon; 
+    float lat = last_lat; 
     
-    if(gpsSerial.available() > 0)
+    
+    while(gpsSerial.available() > 0)
     {
-      Serial.println("avaible");
-      Serial.println(gps.encode(gpsSerial.read()));// encode gps data
-       
-        Serial.println("read");
-        gps.location.isValid();
-        
-          Serial.println("valid");
-          lat=gps.location.lat();
-          lon=gps.location.lng();
-        
       
+      
+      //Serial.println(gpsSerial->overflow());
+      //Serial.println(gpsSerial->read());
+      if(gps.encode(gpsSerial.read()))
+      {
+        
+       Serial.println("encoded");
+         
+       if(gps.location.isValid())
+       {
+            Serial.println("valid");
+            lat=gps.location.lat();
+            lon=gps.location.lng();
+            last_lon=lon;
+            last_lat=lat;
+       }
+       if (gps.date.isValid())
+       {
+        Serial.println("date");
+        }
+      
+      }
     }
     
     
@@ -30,10 +45,10 @@ std::string NEO6MV2_module::getData()
     return latitude;
   
 }
-NEO6MV2_module::NEO6MV2_module()
+NEO6MV2_module::NEO6MV2_module():gpsSerial(4,5)
 {
-  
-     gpsSerial.begin(4800);
-    
-     // connect gps sensor
+     
+     gpsSerial.begin(9600);
+     return;
+
 }
