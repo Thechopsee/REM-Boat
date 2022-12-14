@@ -31,6 +31,7 @@ void setup()
  blocks.push_back(new Blok(0,controll));
  blocks.push_back(new Blok(2,status));
  blocks.push_back((Blok*)new Nav_blok(1));
+ 
  //contBlocks.push_back(new Controll_blok(0,0,0,"WTF"));
  //contBlocks.push_back(new Controll_blok(1,0,5,"Cabin"));
  //contBlocks.push_back(new Controll_blok(2,0,4,"Position"));
@@ -39,12 +40,9 @@ void setup()
 //Hcsr04Module* vzdal=new Hcsr04Module(15,13);
 //contBlocks.push_back(new Status_blok(4,2,0,"Temp",vzdal));
 //contBlocks.push_back(new Status_blok(5,2,0,"vzdalenost",vzdal));
-
-
   Serial.begin(9600);
     delay(10);
-    
-
+   
     Serial.println();
     Serial.print("Connecting to ");
     Serial.println(ssid);
