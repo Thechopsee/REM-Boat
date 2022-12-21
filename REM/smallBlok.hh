@@ -2,6 +2,7 @@
 #include <string>
 #include "smallBlok.hh"
 #include "Arduino.h"
+#include "typeEnum.hh"
 class SmallBlok 
 {
   public:
@@ -14,4 +15,5 @@ class SmallBlok
     virtual void setPin(bool dat);
     virtual void update();
     virtual void resolveInput(String request);
+    
 };

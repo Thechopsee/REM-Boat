@@ -35,3 +35,7 @@ void Nav_blok::getStatus()
     this->pathLon.push_back(this->longitude);
     this->pathLat.push_back(this->latitude);
 }
+Nav_module* Nav_blok::getModule()
+{
+    return this->module;
+}

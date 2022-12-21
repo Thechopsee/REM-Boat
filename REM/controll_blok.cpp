@@ -42,3 +42,5 @@ void Controll_blok::resolveInput(String request)
             this->setPin(true);
         }
 }
+
+

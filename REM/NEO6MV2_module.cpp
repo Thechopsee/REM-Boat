@@ -45,7 +45,7 @@ std::string NEO6MV2_module::getData()
     return latitude;
   
 }
-NEO6MV2_module::NEO6MV2_module():gpsSerial(4,5)
+NEO6MV2_module::NEO6MV2_module():gpsSerial(2,0)
 {
      
      gpsSerial.begin(9600);

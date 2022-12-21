@@ -58,7 +58,6 @@ void Renderer::drawSmallBlok(SmallBlok* cb,WiFiClient client,BlokTypeEnum type)
     status.append(cb->actual_status);
     status.append("</div>");
     client.println(status.c_str());
-    //client.println("<div class=\"button-line\"><a href=\"LED_SEARCH=ON\"><button class=\"on\">On</button></a><a href=\"LED_SEARCH=OFF\"><button class=\"off\">Off</button></a></div>");
     client.println("</div>");
   }
 }
@@ -97,4 +96,43 @@ void Renderer::drawOLMJS(WiFiClient client)
  client.println("var marker = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([18.610968, 49.754749])));");
  client.println("markers.getSource().addFeature(marker);");
   client.println("}</script>");
+}
+
+
+void Renderer::drawNew(std::vector<Blok *>bl,std::vector<SmallBlok*> cb,WiFiClient client)
+{
+  if(this->strategy==nullptr)
+  {
+    this->strategy=new RenderStrategy(bl);
+  }
+  
+  client.println("HTTP/1.1 200 OK");
+  client.println("Content-Type: text/html");
+  client.println(""); 
+  client.println("<!DOCTYPE HTML>");
+  client.println("<html>");
+  ///////////////////////////head////////////////
+  client.println("<head>");
+  for(int i=0;i<this->strategy->linkscomands.size();i++)
+  {
+    client.println(strategy->linkscomands[i]->renderMessage().c_str());
+  }
+ 
+  client.println("<script type=\"text/javascript\">");
+  for(int i=0;i<this->strategy->jscomands.size();i++)
+  {
+    client.println(strategy->jscomands[i]->renderMessage().c_str());
+  }
+  client.println("</script>");
+  client.println("</head>");
+  //////////////////////body////////////////////
+  client.println("<body onload=start()>");
+  client.println("<h1>REM-Boat</h1>");
+  client.println("<div class=\"container\">");
+  for(int i=0;i<bl.size();i++)
+  {
+    this->drawBlok(bl[i],cb,client);
+  }
+  client.println("</div>");
+  client.println("</body>");
 }

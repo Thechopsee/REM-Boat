@@ -17,5 +17,6 @@ class Nav_blok : public Blok
         Nav_blok(int id);
         std::string getBlokStyle();
         void setModule();
+        Nav_module* getModule();
         void getStatus();
 };

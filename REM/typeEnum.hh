@@ -3,5 +3,6 @@ enum BlokTypeEnum
 {
 controll,
 nav,
-status 
+status,
+virt
 };

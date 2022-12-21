@@ -22,3 +22,4 @@ void SmallBlok::resolveInput(String request)
 {
   return;
 }
+
