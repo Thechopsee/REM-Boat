@@ -45,10 +45,10 @@ void setup()
  blocks.push_back(new Blok(2,status));
  blocks.push_back((Blok*)new Nav_blok(1));
  
-contBlocks.push_back(new Controll_blok(0,0,0,"WTF"));
-contBlocks.push_back(new Controll_blok(1,0,5,"Cabin"));
-contBlocks.push_back(new Controll_blok(2,0,4,"Position"));
-contBlocks.push_back(new Controll_blok(3,0,2,"Special"));
+//contBlocks.push_back(new Controll_blok(0,0,0,"WTF"));
+//contBlocks.push_back(new Controll_blok(1,0,5,"Cabin"));
+//contBlocks.push_back(new Controll_blok(2,0,4,"Position"));
+//contBlocks.push_back(new Controll_blok(3,0,2,"Special"));
 
 /*Hcsr04Module* vzdal=new Hcsr04Module(15,13);
 contBlocks.push_back(new Status_blok(4,2,0,"Temp",vzdal));
