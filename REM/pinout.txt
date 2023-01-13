@@ -1,0 +1,13 @@
+blok 1
+d1,2 gpio 4,5 rx,tx navmodule
+d0 gpio 16 hlavni okruh kabina
+d3 gpio 0 hlavni okruh paluba
+d4 gpio 2 servisní světla(pozični světla etc...)
+blok 2
+d5 gpio 14 crana tahani 
+d6 gpio 12 crana otaceni
+d7 gpio 13 crana zvedaní
+d8 gpio 15 crana osvetleni
+
+
+
