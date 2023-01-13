@@ -9,6 +9,7 @@
 #include <vector>
 #include <sstream>
 
+
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
@@ -23,4 +24,5 @@ class OLEDDisplayHandler{
     OLEDDisplayHandler();
     void setIP(IPAddress ip);
     void showData();
+    void showText(std::string text);
 };

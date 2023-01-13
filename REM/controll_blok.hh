@@ -1,6 +1,8 @@
 #pragma once
 #include "smallBlok.hh"
 #include "Arduino.h"
+#include "DisplaySingleton.hh"
+
 class Controll_blok: public SmallBlok
 {
   public:

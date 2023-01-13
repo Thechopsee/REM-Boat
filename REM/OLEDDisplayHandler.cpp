@@ -13,6 +13,22 @@ void OLEDDisplayHandler::setIP(IPAddress ip)
     
     this->ip=ip;
 }
+void OLEDDisplayHandler::showText(std::string text)
+{
+    if(strcmp(text.c_str(),"ip")==0)
+    {
+        this->showData();
+        return;
+    }
+    display.clearDisplay();
+    display.display();
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(40,42);
+    display.println(text.c_str());
+    display.display();
+
+}
 void OLEDDisplayHandler::showData()
 {
     

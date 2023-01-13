@@ -1,5 +1,5 @@
 #include "controll_blok.hh"
-#include "Arduino.h"
+
 Controll_blok::Controll_blok(int id,int blok_id,int pin,char * namee) : SmallBlok(id,blok_id,pin,namee)
 {
     this->actual_status="🔴";
@@ -32,14 +32,17 @@ void Controll_blok::resolveInput(String request)
         nameon.append(this->name);
         nameon.append("=ON");
         
-        
+        DisplaySingleton *neco=DisplaySingleton::returnInstance();
         if(request.indexOf(nameoff.c_str())!=-1)
         {
             this->setPin(false);
+            neco->Add(nameoff,5);
         }
         if(request.indexOf(nameon.c_str())!=-1)
         {
             this->setPin(true);
+            neco->Add(nameon,5);
+            
         }
 }
 

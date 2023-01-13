@@ -1,5 +1,4 @@
 #include "NEO6MV2_module.hh"
-//gpsSerialSoftwareSerial ss(4, 5);
 TinyGPSPlus gps;
 std::string NEO6MV2_module::getData()
 {
@@ -24,6 +23,8 @@ std::string NEO6MV2_module::getData()
             Serial.println("valid");
             lat=gps.location.lat();
             lon=gps.location.lng();
+            
+
             last_lon=lon;
             last_lat=lat;
        }
