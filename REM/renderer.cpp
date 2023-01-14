@@ -58,13 +58,11 @@ void Renderer::drawSmallBlok(SmallBlok* cb,WiFiClient client,BlokTypeEnum type)
       status.append(cb->actual_status);
       status.append("</div></div>");
       client.println(status.c_str());
-      std::string range="<label for=";
+      std::string range="<form><input type=\"range\" name=";
       range.append(cb->name);
-      range.append(">");
-      range.append(cb->name);
-      range.append("</label><input type=\"range\" name=");
-      range.append(cb->name);
-      range.append("value=\"0\" min=\"0\" max=\"250\" id=\"ran\" onchange=\"updateRange(this)\"><div id=\"ranhodnota\">0</div>");
+      range.append(" value=\""); 
+      range.append(std::to_string(cb->getValue()));
+      range.append("\" min=\"0\" max=\"250\" id=\"ran\" onchange=\"updateRange(this)\"><div id=\"ranhodnota\">0</div>");
       client.println(range.c_str());
       std::string buttons=("<div class=\"button-line\"><button class=\"on\">Submit</button>");
       buttons.append("</div></form>");

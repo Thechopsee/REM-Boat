@@ -33,7 +33,7 @@ void Controll_blok::updatePin(int value)
     {
         this->actual_status="🔴";
     }
-
+    this->current_value=value;
     digitalWrite(this->pin,value);
 }
 void Controll_blok::resolveInput(String request)
@@ -47,7 +47,6 @@ void Controll_blok::resolveInput(String request)
         nameon.append("=ON");
 
         std::string namerange="/";
-        namerange.append(this->name);
         namerange.append("?");
         namerange.append(this->name);
         namerange.append("=");
@@ -78,7 +77,10 @@ void Controll_blok::resolveInput(String request)
             
         }
 }
-
+int Controll_blok::getValue()
+{
+  return this->current_value;
+}
 ControllBlokTypeEnum Controll_blok::identify()
 {
     return this->type;

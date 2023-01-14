@@ -26,3 +26,7 @@ ControllBlokTypeEnum SmallBlok::identify()
 {
   return IDN;
 }
+int SmallBlok::getValue()
+{
+  return 0;
+}
