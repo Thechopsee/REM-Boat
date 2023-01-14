@@ -6,6 +6,7 @@
 #include "typeEnum.hh"
 #include "nav_blok.hh"
 #include "RenderStrategy.hh"
+#include "controll_blok.hh"
 class Renderer
 {
   public:

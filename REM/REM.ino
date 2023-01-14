@@ -37,14 +37,14 @@ void setup()
  blocks.push_back(new Blok(2,controll));
  blocks.push_back((Blok*)new Nav_blok(1));
  
-contBlocks.push_back(new Controll_blok(0,0,16,"Kabina"));
-contBlocks.push_back(new Controll_blok(1,0,0,"Paluba"));
-contBlocks.push_back(new Controll_blok(2,0,2,"ServisniSvetla"));
+contBlocks.push_back(new Controll_blok(0,0,16,"Kabina",ONOFF));
+contBlocks.push_back(new Controll_blok(1,0,0,"Paluba",ONOFF));
+contBlocks.push_back(new Controll_blok(2,0,2,"ServisniSvetla",ONOFF));
 
-contBlocks.push_back(new Controll_blok(3,2,14,"Lano"));
-contBlocks.push_back(new Controll_blok(4,2,12,"Otoceni"));
-contBlocks.push_back(new Controll_blok(5,2,13,"Zvedani"));
-contBlocks.push_back(new Controll_blok(6,2,15,"osvetleni"));
+contBlocks.push_back(new Controll_blok(3,2,14,"Lano",RANGE));
+contBlocks.push_back(new Controll_blok(4,2,12,"Otoceni",RANGE));
+contBlocks.push_back(new Controll_blok(5,2,13,"Zvedani",RANGE));
+contBlocks.push_back(new Controll_blok(6,2,15,"osvetleni",ONOFF));
 
 /*Hcsr04Module* vzdal=new Hcsr04Module(15,13);
 contBlocks.push_back(new Status_blok(4,2,0,"Temp",vzdal));

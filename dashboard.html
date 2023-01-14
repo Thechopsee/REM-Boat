@@ -13,7 +13,15 @@
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
     <base href="file:///C:/Users/ValMe/Documents/GitHub/REM-Boat/dashboard.html/" />
     <title>REM-Boat</title>
-
+    <script>
+        ///pridat
+        function updateRange(obj)
+        {
+            var id=obj.id+"hodnota";
+            document.getElementById(id).innerHTML=obj.value;
+        }
+    </script>
+    
 </head>
 <body>
     <h1>REM-Boat</h1>
@@ -38,6 +46,32 @@
                 </div>
             </div>
         </div>
+        <div class="Box">
+            <div class="fake-border">
+                <div class="controll-box">
+                    <div class="textC">PokusRange<div class="status-dot" id="searchlight-dot">🔴</div></div>
+                    <form action="PokusRange" method="get">
+                        <label for="ran">Pokus</label>
+                        <input type="range" name="ran" value="0" min="0" max="250" id="ran" onchange="updateRange(this)">
+                        <div id="ranhodnota">0</div>
+                    <div class="button-line"><button class="on">Submit</button></div>
+                    </form>
+                </div>
+                <div class="controll-box">
+                    <div class="textC">Cabin<div class="status-dot" id="cabin-dot">🔴</div></div>
+                    <div class="button-line"><a href="LED_CABIN=ON"><button class="on">On</button></a><a href="LED_CABIN=OFF"><button class="off">Off</button></a></div>
+                </div>
+                <div class="controll-box">
+                    <div class="textC">Position<div class="status-dot" id="position-dot">🔴</div></div>
+                    <div class="button-line"><a href="LED_POSITION=ON"><button class="on">On</button></a><a href="LED_POSITION=OFF"><button class="off">Off</button></a></div>
+                </div>
+                <div class="controll-box">
+                    <div class="textC">Special<div class="status-dot" id="special-dot">🔴</div></div>
+                    <div class="button-line"><a href="LED_SPECIAL=ON"><button class="on">On</button></a><a href="LED_SPECIAL=OFF"><button class="off">Off</button></a></div>
+                </div>
+            </div>
+        </div>
+
         <div class="Box">
             <div class="fake-border-empty">
                 <div class="nav-box">

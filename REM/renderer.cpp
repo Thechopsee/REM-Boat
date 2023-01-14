@@ -29,22 +29,49 @@ void Renderer::drawSmallBlok(SmallBlok* cb,WiFiClient client,BlokTypeEnum type)
 {
   if(type==controll)
   {
-    client.println("<div class=\"controll-box\">");
-    std::string namee="<div class=\"textC\">";
-    namee.append(cb->name);
-    client.println(namee.c_str());
-    std::string status= "<div class=\"status-dot\">";
-    status.append(cb->actual_status);
-    status.append("</div></div>");
-    client.println(status.c_str());
-    std::string buttons="<div class=\"button-line\"><a href=\"";
-    buttons.append(cb->name);
-    buttons.append("=ON\"><button class=\"on\">On</button></a><a href=\"");
-    buttons.append(cb->name);
-    buttons.append("=OFF\"><button class=\"off\">Off</button></a></div>");
-    client.println(buttons.c_str()); 
-    //client.println("<div class=\"button-line\"><a href=\"LED_SEARCH=ON\"><button class=\"on\">On</button></a><a href=\"LED_SEARCH=OFF\"><button class=\"off\">Off</button></a></div>");
-    client.println("</div>");
+    if(cb->identify()==ONOFF)
+    {
+      client.println("<div class=\"controll-box\">");
+      std::string namee="<div class=\"textC\">";
+      namee.append(cb->name);
+      client.println(namee.c_str());
+      std::string status= "<div class=\"status-dot\">";
+      status.append(cb->actual_status);
+      status.append("</div></div>");
+      client.println(status.c_str());
+      std::string buttons="<div class=\"button-line\"><a href=\"";
+      buttons.append(cb->name);
+      buttons.append("=ON\"><button class=\"on\">On</button></a><a href=\"");
+      buttons.append(cb->name);
+      buttons.append("=OFF\"><button class=\"off\">Off</button></a></div>");
+      client.println(buttons.c_str()); 
+      //client.println("<div class=\"button-line\"><a href=\"LED_SEARCH=ON\"><button class=\"on\">On</button></a><a href=\"LED_SEARCH=OFF\"><button class=\"off\">Off</button></a></div>");
+      client.println("</div>");
+    }
+    else if(cb->identify()==RANGE)
+    {
+      client.println("<div class=\"controll-box\">");
+      std::string namee="<div class=\"textC\">";
+      namee.append(cb->name);
+      client.println(namee.c_str());
+      std::string status= "<div class=\"status-dot\">";
+      status.append(cb->actual_status);
+      status.append("</div></div>");
+      client.println(status.c_str());
+      std::string range="<label for=";
+      range.append(cb->name);
+      range.append(">");
+      range.append(cb->name);
+      range.append("</label><input type=\"range\" name=");
+      range.append(cb->name);
+      range.append("value=\"0\" min=\"0\" max=\"250\" id=\"ran\" onchange=\"updateRange(this)\"><div id=\"ranhodnota\">0</div>");
+      client.println(range.c_str());
+      std::string buttons=("<div class=\"button-line\"><button class=\"on\">Submit</button>");
+      buttons.append("</div></form>");
+      client.println(buttons.c_str()); 
+      //client.println("<div class=\"button-line\"><a href=\"LED_SEARCH=ON\"><button class=\"on\">On</button></a><a href=\"LED_SEARCH=OFF\"><button class=\"off\">Off</button></a></div>");
+      client.println("</div>");
+    }
   }
   else
   {

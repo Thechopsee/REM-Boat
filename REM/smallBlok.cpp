@@ -22,4 +22,7 @@ void SmallBlok::resolveInput(String request)
 {
   return;
 }
-
+ControllBlokTypeEnum SmallBlok::identify()
+{
+  return IDN;
+}

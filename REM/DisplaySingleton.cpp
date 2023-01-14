@@ -6,9 +6,6 @@ DisplaySingleton::DisplaySingleton()
        handler=new OLEDDisplayHandler();
        buffer->Add(new DisplayToken("OLED Ready",2));
        buffer->Add(new DisplayToken("ip",100000000));
-       //buffer->Add(new DisplayToken("1",100000000));
-       //buffer->Add(new DisplayToken("2",4));
-       //buffer->Add(new DisplayToken("3",100000000));
     }
 DisplaySingleton* DisplaySingleton::returnInstance()
     {

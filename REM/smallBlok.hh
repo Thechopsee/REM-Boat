@@ -15,5 +15,6 @@ class SmallBlok
     virtual void setPin(bool dat);
     virtual void update();
     virtual void resolveInput(String request);
+    virtual ControllBlokTypeEnum identify();
     
 };
