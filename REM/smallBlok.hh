@@ -10,8 +10,9 @@ class SmallBlok
     int blok_id;
     int pin;
     char *name;
+    ControllBlokTypeEnum type;
     std::string actual_status;
-    SmallBlok(int id,int blok_id,int pin,char *name);
+    SmallBlok(int id,int blok_id,int pin,char *name,ControllBlokTypeEnum type);
     virtual void setPin(bool dat);
     virtual void update();
     virtual void resolveInput(String request);

@@ -1,6 +1,6 @@
 #include "smallBlok.hh"
 
-SmallBlok::SmallBlok(int id,int blok_id,int pin,char *name)
+SmallBlok::SmallBlok(int id,int blok_id,int pin,char *name,ControllBlokTypeEnum type)
 {
     this->id=id;
     this->blok_id=blok_id;
