@@ -6,9 +6,6 @@ DisplaySingleton::DisplaySingleton()
        handler=new OLEDDisplayHandler();
        buffer->Add(new DisplayToken("OLED Ready",2));
        buffer->Add(new DisplayToken("ip",100000000));
-       //buffer->Add(new DisplayToken("1",100000000));
-       //buffer->Add(new DisplayToken("2",4));
-       //buffer->Add(new DisplayToken("3",100000000));
     }
 DisplaySingleton* DisplaySingleton::returnInstance()
     {
@@ -21,23 +18,8 @@ DisplaySingleton* DisplaySingleton::returnInstance()
 
     void DisplaySingleton::Tick()
     {
-        if(this->buffer->actual_index==-1)
-        {
-            return;
-        }
-        
-        this->buffer->buffer[this->buffer->actual_index]->TokenValidity--;
-        this->handler->showText(this->buffer->buffer[this->buffer->actual_index]->getText());
-        if(this->buffer->buffer[this->buffer->actual_index]->TokenValidity<=0)
-        {
-            this->buffer->Delete(buffer->actual_index);
-        }
-        
-        this->buffer->actual_index++;
-        if(this->buffer->actual_index>=buffer->size)
-        {
-            this->buffer->actual_index=0;
-        }
+        std::string text=this->buffer->Next();
+        this->handler->showText(text);
     }
 
 
