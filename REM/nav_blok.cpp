@@ -1,3 +1,4 @@
+/*
 #include "nav_blok.hh"
 #include <string>
 #include <sstream>
@@ -39,3 +40,4 @@ Nav_module* Nav_blok::getModule()
 {
     return this->module;
 }
+*/

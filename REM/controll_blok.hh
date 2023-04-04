@@ -6,11 +6,12 @@
 class Controll_blok: public SmallBlok
 {
   public:
-    Controll_blok(int id,int blok_id,int pin,char * namee,ControllBlokTypeEnum type);
+    Controll_blok(int id,int blok_id,int pin,char * namee,BlokTypeEnum type);
     void setPin(bool dat);
     void resolveInput(String request);
     void update();
+    int current_value;
     int getValue();
-    ControllBlokTypeEnum identify();
+   BlokTypeEnum identify();
     
 };

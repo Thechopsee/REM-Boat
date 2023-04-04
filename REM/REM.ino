@@ -1,17 +1,18 @@
 #pragma once
 //
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
+
 #include <Ethernet.h>
 #include <vector>
 #include <string>
 #include "blok.hh"
 #include "controll_blok.hh"
 #include "status_blok.hh"
-#include "nav_blok.hh"
+//#include "nav_blok.hh"
 #include "renderer.hh"
 #include "typeEnum.hh"
 #include "hc-sr04_module.hh"
-#include "NEO6MV2_module.hh"
+//#include "NEO6MV2_module.hh" --not working jet
 
 #include "DisplaySingleton.hh"
 
@@ -36,10 +37,10 @@ void setup()
  rd=new Renderer();
  blocks.push_back(new Blok(0,controll));
  blocks.push_back(new Blok(2,status));
- blocks.push_back((Blok*)new Nav_blok(1));
+ //blocks.push_back((Blok*)new Nav_blok(1));
  
-contBlocks.push_back(new Controll_blok(0,0,10,"WTF"));
-//contBlocks.push_back(new Controll_blok(1,0,5,"Cabin"));
+contBlocks.push_back(new Controll_blok(0,0,15,"TestFunction",controll));
+contBlocks.push_back(new Controll_blok(1,0,2,"RainLight",controll));
 //contBlocks.push_back(new Controll_blok(2,0,4,"Position"));
 //contBlocks.push_back(new Controll_blok(3,0,2,"Special"));
 
@@ -79,32 +80,29 @@ contBlocks.push_back(new Status_blok(5,2,0,"vzdalenost",vzdal));*/
 
 void loop() 
 {
-    WiFiClient client = server.available();
-    if (!client) 
-    {
-        return;
-    }
-    
+ 
+    WiFiClient client1 = server.available();
+
+  if (client1)
+  {
     Serial.println("NEW request");
-    
-    String request = client.readStringUntil('r');
-    //ignoring favicon request not pernament solution
-    if (request[5]=='f')
+    String request = client1.readStringUntil('\r');
+    // ignoring favicon request not permanent solution
+    if (request[5] == 'f')
     {
-        return;  
+      client1.stop();
+      return;
     }
     neco->Tick();
     Serial.println(request);
-    
-    client.flush();
 
-    for(int i=0;i<contBlocks.size();i++)
+    for (int i = 0; i < contBlocks.size(); i++)
     {
-       contBlocks[i]->resolveInput(request);
+      contBlocks[i]->resolveInput(request);
     }
-    rd->drawNew(blocks,contBlocks,client);
+    rd->drawNew(blocks, contBlocks, client1);
 
-    delay(1);
     Serial.println("Client disonnected");
     Serial.println("");
+  }
 }

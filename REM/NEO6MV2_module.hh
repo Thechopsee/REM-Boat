@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include "nav_module.hh"
 #include <string>
 #include <SoftwareSerial.h>
@@ -16,4 +16,4 @@ class NEO6MV2_module :public Nav_module
  SoftwareSerial gpsSerial;
  NEO6MV2_module();
  std::string getData();
-};
+};*/

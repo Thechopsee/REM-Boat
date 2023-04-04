@@ -8,8 +8,8 @@ void RenderStrategy::buildStrategy(std::vector<Blok *> blk)
     {
         if(blk[i]->type==nav)
         {
-            Nav_blok * temp=(Nav_blok *)blk[i];
-            this->jscomands.push_back(new NavCommand(temp->getModule()));
+           // Nav_blok * temp=(Nav_blok *)blk[i];
+           // this->jscomands.push_back(new NavCommand(temp->getModule()));
             break;
         }
     }

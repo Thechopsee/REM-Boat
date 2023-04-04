@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include "status_blok.hh"
 #include "blok.hh"
 #include <string>
@@ -20,3 +20,4 @@ class Nav_blok : public Blok
         Nav_module* getModule();
         void getStatus();
 };
+*/

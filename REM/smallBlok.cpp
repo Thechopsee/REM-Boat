@@ -1,6 +1,6 @@
 #include "smallBlok.hh"
 
-SmallBlok::SmallBlok(int id,int blok_id,int pin,char *name,ControllBlokTypeEnum type)
+SmallBlok::SmallBlok(int id,int blok_id,int pin,char *name,BlokTypeEnum type)
 {
     this->id=id;
     this->blok_id=blok_id;
@@ -22,4 +22,3 @@ void SmallBlok::resolveInput(String request)
 {
   return;
 }
-

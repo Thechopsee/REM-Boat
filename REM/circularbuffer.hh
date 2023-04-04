@@ -20,14 +20,14 @@ class CircularBuffer
     {
       if(this->actual_index==-1)
         {
-            return;
+            return "";
         }
         
         this->buffer[this->actual_index]->TokenValidity--;
         std::string text=this->buffer[this->actual_index]->getText();
-        if(this->buffer[this->buffer->actual_index]->TokenValidity<=0)
+        if(this->buffer[this->actual_index]->TokenValidity<=0)
         {
-            this->buffer->Delete(buffer->actual_index);
+            Delete(actual_index);
         }
         
         this->actual_index++;

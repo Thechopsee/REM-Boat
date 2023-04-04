@@ -1,6 +1,6 @@
 #include "controll_blok.hh"
 
-Controll_blok::Controll_blok(int id,int blok_id,int pin,char * namee,ControllBlokTypeEnum type) : SmallBlok(id,blok_id,pin,namee,type)
+Controll_blok::Controll_blok(int id,int blok_id,int pin,char * namee,BlokTypeEnum type) : SmallBlok(id,blok_id,pin,namee,type)
 {
     this->actual_status="🔴";
     pinMode(this->pin, OUTPUT);
@@ -53,7 +53,7 @@ void Controll_blok::resolveInput(String request)
             this->setPin(true);
             neco->Add(nameon,5);
             
-        }
+        }/*
         if(request.indexOf(namerange.c_str())!=-1)
         {
             std::stringstream ss(request.c_str());
@@ -67,15 +67,13 @@ void Controll_blok::resolveInput(String request)
             Serial.println(hodnota.c_str());
             neco->Add(nameon,5);
             
-        }
+        }*/
 }
 int Controll_blok::getValue()
 {
   return this->current_value;
 }
-ControllBlokTypeEnum Controll_blok::identify()
+BlokTypeEnum Controll_blok::identify()
 {
     return this->type;
 }
-
-
