@@ -21,7 +21,7 @@ void Renderer::drawBlok(Blok *bl,std::vector<SmallBlok*> cb,WiFiClient client)
   else
   {
     
-    client.println(((Nav_blok*)bl)->getBlokStyle().c_str());
+   // client.println(((Nav_blok*)bl)->getBlokStyle().c_str());
   }
 }
 

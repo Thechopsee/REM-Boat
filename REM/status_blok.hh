@@ -3,6 +3,7 @@
 #include <string>
 #include "rxtxmodule.hh"
 #include "Arduino.h"
+#include "typeEnum.hh"
 class Status_blok :public SmallBlok
 {
     public:

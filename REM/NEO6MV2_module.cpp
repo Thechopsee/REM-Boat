@@ -1,4 +1,4 @@
-#include "NEO6MV2_module.hh"
+/*#include "NEO6MV2_module.hh"
 TinyGPSPlus gps;
 std::string NEO6MV2_module::getData()
 {
@@ -52,4 +52,4 @@ NEO6MV2_module::NEO6MV2_module():gpsSerial(2,0)
      gpsSerial.begin(9600);
      return;
 
-}
+}*/
